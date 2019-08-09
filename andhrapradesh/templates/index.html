@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+    <center><h1><u><b> Districts in AP </h1></center>
+    <hr>
+    {% if all_dist %}
+    <div class="row container-fluid" style="margin-top: 10px">
+        {% for dist in all_dist %}
+            <div class="col-sm-4 col-md-3">
+              <center> <img src = {{dist.district_logo}} alt="image" class="thumbnail" style="width:310px;height:250px; border-radius: 6px;">
+              <b><u><a href = "/andhrapradesh/{{ dist.id }}"> {{ dist.district_name }} </a></u></b> </center> <br>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+        <h3> You don't have any districts </h3>
+    {% endif %}
+
+{% endblock %}

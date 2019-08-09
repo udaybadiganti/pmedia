@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<center> <h1><u><b>List of Assemblies in {{detail.district_name}}</h1> </center>
+
+<hr>
+{% if detail %}
+<div class="row container-fluid" style="margin-top: 10px">
+    {% for ass in detail.assemblies_set.all %}
+        <div class="col-sm-4 col-md-3">
+          <center> <img src = {{ass.assembly_logo}} alt="image" class="thumbnail" style="width:310px;height:250px; border-radius: 6px;">
+          <b><u><a href = "/andhrapradesh/complaint/{{ass.id}}"> {{ ass.assembly }} </a></u></b> </center> <br>
+        </div>
+    {% endfor %}
+</div>
+
+{% else %}
+    <h3> You don't have any Assemblies </h3>
+{% endif %}
+<!--
+<ul>
+    {% for ass in detail.assemblies_set.all %}
+    <li> {{ ass.assembly }} </li>
+    {% endfor %}
+</ul>
+-->
+{% endblock %}

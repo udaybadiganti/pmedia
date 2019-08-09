@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> {% block title %} PublicMedia {% endblock %} </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+{% block style %}
+
+{% endblock %}
+
+</head>
+
+<body>
+
+<h1 style="background-color: #f1f1f1; height: 50px" > &nbsp
+<img src="{% static 'images/logo.jpg' %}" alt="My image" height="50px" width=50px/>
+  <a href="/">E-Complaint</a>
+</h1>
+
+<ul class="nav navbar-nav navbar-right">
+  {% if user.is_authenticated %}
+                      <li class="">
+                            <a href="{% url 'logout' %}">
+                              <span class="glyphicon glyphicon-log-out" aris-hidden = "true"></span>&nbsp;Logout
+                            </a>
+                        </li>
+  {% else %}
+                        <li class="">
+                                <a href="/accounts/register/">
+                                    <span class="glyphicon glyphicon-user" aris-hidden = "true"></span>&nbsp;Signin
+                                </a>
+                        </li>
+                        <li class="">
+                            <a href="/accounts/login/">
+                                <span class="glyphicon glyphicon-log-in" aris-hidden = "true"></span>&nbsp;Login
+                            </a>
+                        </li>
+{% endif %}
+
+
+                </ul>
+
+
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+
+{% block body %}
+
+{% endblock %}
+
+{% if user.is_authenticated %}
+
+    <a href="/andhrapradesh/post_complaint/">
+        <center> <button type="submit" class="btn btn-info" >Post_Complaint</button> </center><br><br>
+    </a>
+
+{% else %}
+    <a href="/andhrapradesh/login">
+
+{% endif %}
+
+
+
+ {% block footer %}
+
+
+ <footer class="container-fluid bg-4 text-center" style = "padding-top: 70px; padding-bottom: 70px;">
+  <p>E-Complaint Made By <a href="https://www.e-complaint.com">www.e-complaint.com</a></p>
+</footer>
+ {% endblock %}
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>

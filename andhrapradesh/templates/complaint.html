@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<center> <h1><b><u> {{detail_comp.assembly}}</h1> </center>
+
+<hr>
+{% if detail_comp %}
+<div class="row container-fluid" style="margin-top: 10px;">
+    {% for ass in detail_comp.public_complaints_set.all %}
+    <div class="col-sm-6 col-md-6">
+        {{ass.created_on}} | <font color="green">  {{ass.created_by}} </font> <br> </br>
+         <img src = "{{ ass.complaint_photo.url }}" alt="image" class="thumbnail" style="width:600px;height:380px; border-radius: 8px;">
+
+        <b><h4>{{ass.complaint_name}}  </h4>
+
+          <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a> &nbsp
+          <a href="/delete/{{ employee.id }}">Delete</a>
+        </b>
+
+        <p>{{ass.description}}</p>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+    <h3> You don't have any Assemblies </h3>
+{% endif %}
+
+{% endblock %}
